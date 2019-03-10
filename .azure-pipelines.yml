@@ -54,3 +54,13 @@ jobs:
       testRunTitle: '$(WORKERS) workers; $(CHAINS) chains'
     condition: always()
     displayName: 'Publish Test Results'
+- job: MultiBUGS_Linux
+  timeoutInMinutes: 0
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - script: |
+      curl -s http://dev.obertone.ru/dev.obertone.ru.gpg.key | sudo apt-key add -
+      echo "deb http://dev.obertone.ru/unity testing main" | sudo tee -a /etc/apt/sources.list.d/bbcb.list
+      sudo apt-get -qq update
+      sudo apt-get -qq install bbcb mpich:i386
