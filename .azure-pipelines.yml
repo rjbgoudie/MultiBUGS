@@ -61,9 +61,11 @@ jobs:
   steps:
   - script: |
       sudo dpkg --add-architecture i386
+      sudo add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -sc)/"
+      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+      sudo add-apt-repository ppa:marutter/rdev
       sudo apt-get update
-      sudo apt-get install mpich:i386
-      sudo apt-get install libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
+      sudo apt-get install r-base mpich:i386 libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
       git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}/bbcb
       ls ${AGENT_HOMEDIRECTORY}/bbcb
       ls ${AGENT_HOMEDIRECTORY}/bbcb/
@@ -72,10 +74,7 @@ jobs:
       ./build
       cd ${BUILD_SOURCESDIRECTORY}
       ls
-      env
-      sudo add-apt-repository "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -sc)/"
-      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-      sudo add-apt-repository ppa:marutter/rdev
-      sudo apt-get update
-      sudo apt-get upgrade
-      sudo apt-get install r-base
+      which Rscript
+      which R
+      which mpiexec.mpich
+      which mpiexec
