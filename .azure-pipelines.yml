@@ -69,3 +69,6 @@ jobs:
       cd ${AGENT_HOMEDIRECTORY}/bbcb/bbcp/BlackBox
       ./switch-target `uname -s` GUI
       ./build
+      cd ${BUILD_SOURCESDIRECTORY}
+      ls
+      env
