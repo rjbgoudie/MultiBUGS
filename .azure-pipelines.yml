@@ -62,6 +62,7 @@ jobs:
   - script: |
       sudo dpkg --add-architecture i386
       sudo apt-get update
+      udo apt-get install mpich:i386
       sudo apt-get install libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
       git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}/bbcb
       ls ${AGENT_HOMEDIRECTORY}/bbcb
