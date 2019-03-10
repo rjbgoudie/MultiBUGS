@@ -61,7 +61,7 @@ jobs:
   steps:
   - script: |
       sudo dpkg --add-architecture i386
-      curl -s http://dev.obertone.ru/dev.obertone.ru.gpg.key | sudo apt-key add -
-      echo "deb http://dev.obertone.ru/unity testing main" | sudo tee -a /etc/apt/sources.list.d/bbcb.list
-      sudo apt-get -qq update
-      sudo apt-get -qq install bbcb mpich:i386
+      sudo apt-get update
+      sudo apt-get install libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
+      git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}
+      ls ${AGENT_HOMEDIRECTORY}
