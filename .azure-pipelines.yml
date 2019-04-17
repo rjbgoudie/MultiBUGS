@@ -85,8 +85,9 @@ jobs:
       chmod +x MultiBUGS-binary/OpenBUGS
     displayName: Build MultiBUGS
   - script: |
-      echo ${R_LIBS_USER}
-      mkdir -p ${R_LIBS_USER}
+      # Strong opinions on R_LIBS_USER https://stat.ethz.ch/pipermail/r-sig-debian/2017-July/thread.html
+      mkdir -p /usr/local/lib/R/site-library/
+      chmod a+rwx /usr/local/lib/R/site-library/
       Rscript -e "install.packages(\"devtools\", repos=\"https://cloud.r-project.org\")" -e "install.packages(\"xml2\", repos=\"https://cloud.r-project.org\")" -e "devtools::install_github(\"MultiBUGS/R2MultiBUGS\")" -e "devtools::install_github(\"MultiBUGS/multibugstests\")"
     displayName: Install R packages
   - script: |
