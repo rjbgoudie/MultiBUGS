@@ -121,9 +121,9 @@ jobs:
       which mpiexec
     displayName: Run tests
   - task: PublishPipelineArtifact@0
-  inputs:
-    artifactName: 'artifactName'
-    targetPath: '${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/screenshot.png'
+    inputs:
+      artifactName: 'artifactName'
+      targetPath: '${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/screenshot.png'
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: 'C:\MultiBUGS\TESTS-*$(WORKERS)workers-$(CHAINS)chains.xml'
