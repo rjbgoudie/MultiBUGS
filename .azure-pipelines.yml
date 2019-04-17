@@ -84,6 +84,8 @@ jobs:
       g++ -o MultiBUGS MultiBUGS.cpp
       Developer/BuildLinux | ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-dev0
       chmod +x MultiBUGS-binary/OpenBUGS
+      chmod +x MultiBUGS-binary/MultiBUGS
+      chmod +x MultiBUGS-binary/run-MultiBUGS
     displayName: Build MultiBUGS
   - script: |
       # needed for devtools
