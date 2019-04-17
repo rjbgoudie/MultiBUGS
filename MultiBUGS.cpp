@@ -12,6 +12,7 @@
 #include <libgen.h>
 #include <unistd.h>
 #include <limits.h>
+#include <cstdlib>
 #endif
 
 // MultiBUGS.exe is a very simple wrapper to avoid users needing to call
@@ -119,6 +120,6 @@ int main(int argc, char *argv[]){
       ExePath() +
       "/OpenBUGS\"" +
       multibugs_args;
-    system(param.c_str());
+    std::system(param.c_str());
 #endif
 }
