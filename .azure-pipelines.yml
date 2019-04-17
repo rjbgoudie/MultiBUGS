@@ -71,6 +71,8 @@ jobs:
       sudo apt-get -qq -y update
       sudo apt-get install r-base mpich:i386 libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
       sudo apt-get install r-base-dev
+      # By default, R_LIBS_USERS is not set, so need to allow package installation to site-library
+      sudo chmod o+w /usr/local/lib/R/site-library
     displayName: Install R, 32-bit MPICH, and 32-bit GTK libraries
   - script: | 
       git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}/bbcb
@@ -85,9 +87,6 @@ jobs:
       chmod +x MultiBUGS-binary/OpenBUGS
     displayName: Build MultiBUGS
   - script: |
-      # Strong opinions on R_LIBS_USER https://stat.ethz.ch/pipermail/r-sig-debian/2017-July/thread.html
-      mkdir -p /usr/local/lib/R/site-library/
-      chmod a+rwx /usr/local/lib/R/site-library/
       Rscript -e "install.packages(\"devtools\", repos=\"https://cloud.r-project.org\")" -e "install.packages(\"xml2\", repos=\"https://cloud.r-project.org\")" -e "devtools::install_github(\"MultiBUGS/R2MultiBUGS\")" -e "devtools::install_github(\"MultiBUGS/multibugstests\")"
     displayName: Install R packages
   - script: |
