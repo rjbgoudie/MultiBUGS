@@ -104,9 +104,9 @@ jobs:
   - script: |
       which mpiexec
       which mpiexec.mpich
-      sudo Xvfb :1 -screen 0 1024x768x24 </dev/null &
-      export DISPLAY=":1"
-      Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
+      Xvfb :99 -screen 0 1024x768x24 </dev/null &
+      export DISPLAY=":99"
+      DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
       which mpiexec
       #Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")"
     displayName: Run tests
