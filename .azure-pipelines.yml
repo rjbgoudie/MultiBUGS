@@ -120,7 +120,7 @@ jobs:
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
       which mpiexec
     displayName: Run tests
-  -- task: PublishPipelineArtifact@0
+  - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'artifactName'
     targetPath: '${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/screenshot.png'
