@@ -87,6 +87,8 @@ jobs:
       chmod +x MultiBUGS-binary/OpenBUGS
     displayName: Build MultiBUGS
   - script: |
+      # needed for devtools
+      sudo apt-get install libcurl4-openssl-dev libgit2-dev libssh2-1-dev
       Rscript -e "install.packages(\"devtools\", repos=\"https://cloud.r-project.org\")" -e "install.packages(\"xml2\", repos=\"https://cloud.r-project.org\")" -e "devtools::install_github(\"MultiBUGS/R2MultiBUGS\")" -e "devtools::install_github(\"MultiBUGS/multibugstests\")"
     displayName: Install R packages
   - script: |
