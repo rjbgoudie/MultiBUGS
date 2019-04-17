@@ -114,7 +114,7 @@ jobs:
       EOF
       DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS /PAR script.txt &
       sleep 100
-      DISPLAY=:0 import -window root screenshot.png
+      DISPLAY=:99 import -window root screenshot.png
       DISPLAY=:99 Rscript -e "1+1"
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")"
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
