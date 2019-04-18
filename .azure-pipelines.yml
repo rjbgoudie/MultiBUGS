@@ -124,15 +124,16 @@ jobs:
       summarySet(tau)
       summarySet(Y)	
       modelUpdate(1500,1,1500)
-      samplesCoda('*', 'out')
+      samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
       DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS /PAR script.txt &
       sleep 100
+      ls
       DISPLAY=:99 Rscript -e "1+1"
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
       #sleep 1000
-      DISPLAY=:99 import -window root screenshot.png
+      $DISPLAY=:99 import -window root screenshot.png
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
       which mpiexec
     displayName: Run tests
@@ -143,7 +144,7 @@ jobs:
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName2'
-      targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/out*'
+      targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/CODAchain1.txt'
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: 'C:\MultiBUGS\TESTS-*$(WORKERS)workers-$(CHAINS)chains.xml'
