@@ -111,12 +111,27 @@ jobs:
       cat << EOF > script.txt
       modelDisplay('log')
       modelCheck('Examples/Camelmodel')
+      modelData('Examples/Cameldata')
+      modelCompile(2)
+      modelSetRN(1)
+      modelInits('Examples/Camelinits',1)
+      modelInits('Examples/Camelinits1',2)
+      modelGenInits()
+      modelDistribute(2)
+      modelUpdate(1500,1,1500)
+      samplesSet(tau)
+      samplesSet(Y)
+      summarySet(tau)
+      summarySet(Y)	
+      modelUpdate(1500,1,1500)
+      samplesCoda('*', 'out')
       modelQuit('y')
       EOF
-      #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS /PAR script.txt &
+      DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS /PAR script.txt &
+      sleep 100
       DISPLAY=:99 Rscript -e "1+1"
-      DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
-      sleep 1000
+      #DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
+      #sleep 1000
       DISPLAY=:99 import -window root screenshot.png
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
       which mpiexec
@@ -125,6 +140,10 @@ jobs:
     inputs:
       artifactName: 'artifactName'
       targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/screenshot.png'
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: 'artifactName2'
+      targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/out*'
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: 'C:\MultiBUGS\TESTS-*$(WORKERS)workers-$(CHAINS)chains.xml'
