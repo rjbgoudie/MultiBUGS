@@ -118,12 +118,12 @@ jobs:
       modelInits('Examples/Camelinits1',2)
       modelGenInits()
       modelDistribute(2)
-      modelUpdate(1500,1,1500)
+      modelUpdate(100)
       samplesSet(tau)
       samplesSet(Y)
       summarySet(tau)
       summarySet(Y)	
-      modelUpdate(1500,1,1500)
+      modelUpdate(100)
       samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
@@ -133,7 +133,7 @@ jobs:
       DISPLAY=:99 Rscript -e "1+1"
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
       #sleep 1000
-      $DISPLAY=:99 import -window root screenshot.png
+      DISPLAY=:99 import -window root screenshot.png
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
       which mpiexec
     displayName: Run tests
