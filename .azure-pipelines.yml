@@ -127,7 +127,7 @@ jobs:
       samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
-      DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS /PAR script.txt &
+      DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       sleep 100
       ls
       DISPLAY=:99 Rscript -e "1+1"
