@@ -129,7 +129,9 @@ jobs:
       modelQuit('y')
       EOF
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
-      DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
+      #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
+      cd ../
+      ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt
       sleep 5
       ls
       #DISPLAY=:99 Rscript -e "1+1"
