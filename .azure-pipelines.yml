@@ -117,6 +117,7 @@ jobs:
       modelInits('Examples/Camelinits',1)
       modelInits('Examples/Camelinits1',2)
       modelGenInits()
+      modelDistribute(2)
       modelUpdate(100)
       samplesSet(tau)
       samplesSet(Y)
@@ -129,7 +130,7 @@ jobs:
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
       cd ../
-      ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
+      mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt
       sleep 100
       ls
       ls MultiBUGS-binary
