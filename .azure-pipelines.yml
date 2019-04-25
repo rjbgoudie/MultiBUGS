@@ -134,6 +134,7 @@ jobs:
       ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt
       sleep 5
       ls
+      ls MultiBUGS-binary
       #DISPLAY=:99 Rscript -e "1+1"
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
       #sleep 1000
@@ -144,7 +145,7 @@ jobs:
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName'
-      targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/screenshot.png'
+      targetPath: '$(Build.SourcesDirectory)/screenshot.png'
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName2'
