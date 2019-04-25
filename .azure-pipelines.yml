@@ -132,10 +132,11 @@ jobs:
       samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
+      cat MultiBUGS-binary/script.txr
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
       cd ../
-      mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
+      mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
       sleep 100
       ls
