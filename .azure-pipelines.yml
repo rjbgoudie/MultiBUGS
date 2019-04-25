@@ -111,28 +111,29 @@ jobs:
       cd ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary
       cat << EOF > script.txt
       modelDisplay('log')
-      modelCheck('Examples/Camelmodel')
-      modelData('Examples/Cameldata')
+      modelCheck("Examples/Seedsmodel.odc")
+      modelData("Examples/Seedsdata.odc")
       modelCompile(2)
-      modelInits('Examples/Camelinits',1)
-      modelInits('Examples/Camelinits1',2)
+      modelSetRN(1)
+      modelInits("Examples/Seedsinits.odc", 1)
+      modelInits("Examples/Seedsinits1.odc", 2)
       modelGenInits()
       modelDistribute(2)
-      modelUpdate(100)
-      samplesSet(tau)
-      samplesSet(Y)
-      summarySet(tau)
-      summarySet(Y)	
-      modelUpdate(100)
+      modelUpdate(2000)
+      samplesSet(alpha0)
+      samplesSet(alpha1)
+      samplesSet(alpha2)
+      samplesSet(alpha12)
+      modelUpdate(2000)
       samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
       cd ../
-      #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
-      mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
-      sleep 10
+      mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
+      #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
+      sleep 100
       ls
       ls MultiBUGS-binary
       #DISPLAY=:99 Rscript -e "1+1"
