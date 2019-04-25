@@ -114,7 +114,6 @@ jobs:
       modelCheck('Examples/Camelmodel')
       modelData('Examples/Cameldata')
       modelCompile(2)
-      modelSetRN(1)
       modelInits('Examples/Camelinits',1)
       modelInits('Examples/Camelinits1',2)
       modelGenInits()
