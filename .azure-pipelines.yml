@@ -77,6 +77,10 @@ jobs:
       sudo apt-get install mpich:i386
       # By default, R_LIBS_USERS is not set, so need to allow package installation to site-library
       sudo chmod o+w /usr/local/lib/R/site-library
+      echo $LD_LIBRARY_PATH
+      ls /usr/lib
+      ls /usr/lib64
+      ldconfig -N -v $(sed 's/:/ /g' <<< $LD_LIBRARY_PATH)
     displayName: Install R, 32-bit MPICH, and 32-bit GTK libraries
   - script: | 
       git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}/bbcb
@@ -92,6 +96,7 @@ jobs:
       chmod +x MultiBUGS-binary/OpenBUGS
       chmod +x MultiBUGS-binary/MultiBUGS
       chmod +x MultiBUGS-binary/run-MultiBUGS
+      ldconfig -N -v $(sed 's/:/ /g' <<< $LD_LIBRARY_PATH)
     displayName: Build MultiBUGS
   - script: |
       # needed for devtools
