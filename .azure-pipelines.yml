@@ -122,7 +122,7 @@ jobs:
       modelInits("Examples/Seedsinits.odc", 1)
       modelInits("Examples/Seedsinits1.odc", 2)
       modelGenInits()
-      #modelDistribute(2)
+      modelDistribute(2)
       modelUpdate(2000)
       samplesSet(alpha0)
       samplesSet(alpha1)
