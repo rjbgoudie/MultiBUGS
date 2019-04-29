@@ -141,7 +141,7 @@ jobs:
       samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
-      cat MultiBUGS-binary/script.txt
+      cat script.txt
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
       cd ../
