@@ -144,6 +144,12 @@ jobs:
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
       cd ../
+      chmod +x testmpiscript
+      ./testmpiscript | ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-dev0
+      ./mpi
+      mpiexec -n 1 ./mpi
+      mpiexec -n 2 ./mpi
+      mpiexec -n 3 ./mpi
       mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
       sleep 100

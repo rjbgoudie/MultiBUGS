@@ -1,0 +1,2 @@
+echo "DevCompiler.CompileThis MPJ TestRun"
+echo "Dev2Linker1.LinkElfExe Linux mpi := Kernel+ Files HostFiles HostConsole Console TestRun~"
