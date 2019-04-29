@@ -118,6 +118,8 @@ jobs:
       sleep 5
       export DISPLAY=":99"
       cd ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary
+      cp /usr/lib/i386-linux-gnu/libmpich.so.12.1.0 libmpich.so
+      cp /usr/lib/i386-linux-gnu/libmpich.so.12.1.0 ../libmpich.so
       cat << EOF > script.txt
       modelDisplay('log')
       modelCheck("Examples/Seedsmodel.odc")
