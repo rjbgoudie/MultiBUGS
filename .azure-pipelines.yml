@@ -141,7 +141,7 @@ jobs:
       samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
       modelQuit('y')
       EOF
-      cat MultiBUGS-binary/script.txr
+      cat MultiBUGS-binary/script.txt
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
       #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
       cd ../
@@ -161,7 +161,6 @@ jobs:
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
       sleep 100
       ls
-      ls MultiBUGS-binary
       #DISPLAY=:99 Rscript -e "1+1"
       #Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
       #sleep 200
