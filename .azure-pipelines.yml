@@ -150,6 +150,8 @@ jobs:
       mpiexec -n 1 ./mpi
       mpiexec -n 2 ./mpi
       mpiexec -n 3 ./mpi
+      ls -la
+      nm -D --defined-only libmpich.so
       mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt &
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
       sleep 100
