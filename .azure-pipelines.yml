@@ -91,7 +91,7 @@ jobs:
     displayName: Install BlackBox Cross-Platform
   - script: | 
       cd ${BUILD_SOURCESDIRECTORY}
-      g++ -o MultiBUGS MultiBUGS.cpp
+      g++ -m32 -o MultiBUGS MultiBUGS.cpp
       Developer/BuildLinux | ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-dev0
       cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Cons MultiBUGS-binary/
       chmod +x MultiBUGS-binary/OpenBUGS
