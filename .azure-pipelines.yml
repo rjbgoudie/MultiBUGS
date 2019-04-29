@@ -74,9 +74,8 @@ jobs:
       sudo apt-get -qq -y update
       sudo apt-get install r-base libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
       sudo apt-get install r-base-dev
-      # mpich installs libmpich.so.12 but libmpich-dev install libmpich.so
+      # mpich installs libmpich12 which supplies libmpich.so.12
       sudo apt-get install mpich:i386
-      sudo apt-get install libmpich-dev:i386
       # By default, R_LIBS_USERS is not set, so need to allow package installation to site-library
       sudo chmod o+w /usr/local/lib/R/site-library
       #echo $LD_LIBRARY_PATH
@@ -160,7 +159,7 @@ jobs:
       ls
       ls MultiBUGS-binary
       #DISPLAY=:99 Rscript -e "1+1"
-      #DISPLAY=:99 Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
+      Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")"
       #sleep 1000
       DISPLAY=:99 import -window root screenshot.png
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
