@@ -247,7 +247,7 @@ jobs:
       #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt
       cd MultiBUGS-binary
       #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt &
-      mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt
+      mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt &
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
       sleep 100
       ls
