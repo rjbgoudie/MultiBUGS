@@ -76,6 +76,8 @@ jobs:
       sudo apt-get install r-base-dev
       # mpich installs libmpich12 which supplies libmpich.so.12
       sudo apt-get install mpich:i386
+      # for building MultiBUGS.cpp
+      sudo apt-get install g++-multilib
       # By default, R_LIBS_USERS is not set, so need to allow package installation to site-library
       sudo chmod o+w /usr/local/lib/R/site-library
       #echo $LD_LIBRARY_PATH
