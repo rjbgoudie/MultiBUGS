@@ -212,8 +212,8 @@ jobs:
   - script: |
       # needed for devtools
       sudo apt-fast update
-      sudo apt-fast install libcurl4-openssl-dev libssl-dev
-      sudo apt-fast install libgit2-dev libssh2-1-dev
+      sudo apt-fast install -y libcurl4-openssl-dev libssl-dev
+      sudo apt-fast install -y libgit2-dev libssh2-1-dev
       Rscript -e "install.packages(c(\"devtools\", \"xml2\"), repos=\"https://cloud.r-project.org\", Ncpus = 4)" -e "devtools::install_github(c(\"MultiBUGS/R2MultiBUGS\", \"MultiBUGS/multibugstests\"), threads = 4)"
     displayName: Install R packages
   - script: |
