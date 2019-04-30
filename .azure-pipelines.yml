@@ -156,8 +156,8 @@ jobs:
       cp -r Xhtml/Code/*.ocf MultiBUGS-binary/Xhtml/Code
       cp -r Dev2/Code/*.ocf MultiBUGS-binary/Dev2/Code
       cp -r Gtk2/Code/*.ocf MultiBUGS-binary/Gtk2/Code
-      cp -r Code/*.ocf MultiBUGS/-binary/Code
-      cp -r Cons/*.ocf MultiBUGS/-binary/Cons
+      cp -r Code/*.ocf MultiBUGS-binary/Code
+      cp -r Cons/*.ocf MultiBUGS-binary/Cons
       cp -r Bugs/Code/*.ocf MultiBUGS-binary/Bugs/Code
       cp -r Compare/Code/*.ocf MultiBUGS-binary/Compare/Code
       cp -r Correl/Code/*.ocf MultiBUGS-binary/Correl/Code
