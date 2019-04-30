@@ -245,6 +245,7 @@ jobs:
       #
       #worked
       mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt
+      tar -czf binary.tar.gz MultiBUGS-binary/
       cd MultiBUGS-binary
       #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt &
       #DISPLAY=:99 mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt &
@@ -262,6 +263,10 @@ jobs:
     inputs:
       artifactName: 'artifactName'
       targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/screenshot.png'
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: 'artifactName'
+      targetPath: '$(Build.SourcesDirectory)/binary.tar.gz'
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName2'
