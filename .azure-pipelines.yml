@@ -80,7 +80,8 @@ jobs:
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
       sudo apt-get update
       sudo apt-get install libgtk2.0-0:i386 gtk2-engines:i386 gtk2-engines-murrine:i386 libcanberra-gtk-module:i386 gnome-icon-theme-full
-      sudo apt-get install g++-multilib mpich:i386
+      sudo apt-get install g++-multilib
+      sudo apt-get install mpich:i386
       sudo apt-get install r-base r-base-dev
       # mpich installs libmpich12 which supplies libmpich.so.12
       #sudo apt-get install 
