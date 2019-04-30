@@ -222,12 +222,15 @@ jobs:
       cd ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary
       if [ "$WORKERS" == "1" ]; then
         Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 2, report = \"junit\")"
+        Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 2, report = \"junit\", examples.dir = \"C:/MultiBUGS/Reliability/Examples/\")"
       fi
       if [ "$WORKERS" == "2" ]; then
         Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 2, n.chains = 2, report = \"junit\")"
+        Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 2, n.chains = 2, report = \"junit\", examples.dir = \"C:/MultiBUGS/Reliability/Examples/\")"
       fi
       if [ "$WORKERS" == "3" ]; then
         Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 3, n.chains = 2, report = \"junit\")"
+        Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 3, n.chains = 2, report = \"junit\", examples.dir = \"C:/MultiBUGS/Reliability/Examples/\")"
       fi
       DISPLAY=:99 import -window root screenshot.png
     displayName: Run tests
