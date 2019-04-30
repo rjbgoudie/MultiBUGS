@@ -185,6 +185,19 @@ jobs:
       cp -r Summary/Code/*.ocf MultiBUGS-binary/Summary/Code
       cp -r Test/Code/*.ocf MultiBUGS-binary/Test/Code
       cp -r Updater/Code/*.ocf MultiBUGS-binary/Updater/Code
+      mkdir -p MultiBUGS-binary/Math/Sym
+      mkdir -p MultiBUGS-binary/Graph/Sym
+      mkdir -p MultiBUGS-binary/Sym
+      cp Math/Sym/Func.osf MultiBUGS-binary/Math/Sym/Func.osf
+      cp Graph/Sym/Logical.osf MultiBUGS-binary/Graph/Sym/Logical.osf
+      cp Graph/Sym/Nodes.osf MultiBUGS-binary/Graph/Sym/Nodes.osf
+      cp Graph/Sym/Rules.osf MultiBUGS-binary/Graph/Sym/Rules.osf
+      cp Graph/Sym/Scalar.osf MultiBUGS-binary/Graph/Sym/Scalar.osf
+      cp Graph/Sym/Stochastic.osf MultiBUGS-binary/Graph/Sym/Stochastic.osf
+      #cp System/Sym/Math.osf MultiBUGS-binary/System/Sym/Math.osf
+      #cp System/Sym/Stores.osf MultiBUGS-binary/System/Sym/Stores.osf
+      cp Sym/Math.osf MultiBUGS-binary/Sym/Math.osf
+      cp Sym/Stores.osf MultiBUGS-binary/Sym/Stores.osf
       chmod +x MultiBUGS-binary/OpenBUGS
       chmod +x MultiBUGS-binary/MultiBUGS
       chmod +x MultiBUGS-binary/run-MultiBUGS
