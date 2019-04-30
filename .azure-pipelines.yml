@@ -94,8 +94,9 @@ jobs:
   - script: |
       cd ${BUILD_SOURCESDIRECTORY}
       g++ -m32 -o MultiBUGS MultiBUGS.cpp
-      Developer/BuildLinux | ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-dev0
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Cons MultiBUGS-binary/
+      BBINSTALLDIR="${AGENT_HOMEDIRECTORY}/bbcb/BlackBox"
+      Developer/BuildLinux | ${BBINSTALLDIR}/run-dev0
+      cp -r ${BBINSTALLDIR}/Cons MultiBUGS-binary/
       mkdir -p MultiBUGS-binary/Bugs/Code
       mkdir -p MultiBUGS-binary/Compare/Code
       mkdir -p MultiBUGS-binary/Correl/Code
@@ -134,19 +135,19 @@ jobs:
       mkdir -p MultiBUGS-binary/Gtk2/Code
       mkdir -p MultiBUGS-binary/Code
       mkdir -p MultiBUGS-binary/Cons
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Form/Code/*.ocf MultiBUGS-binary/Form/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Host/Code/*.ocf MultiBUGS-binary/Host/Code
-      #cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Lin/Code/*.ocf MultiBUGS-binary/Lin/Code
-      #cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Ole/Code/*.ocf MultiBUGS-binary/Ole/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Std/Code/*.ocf MultiBUGS-binary/Std/Code
-      #cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/System/Code/*.ocf MultiBUGS-binary/System/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Text/Code/*.ocf MultiBUGS-binary/Text/Code
-      #cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Win/Code/*.ocf MultiBUGS-binary/Win/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Xhtml/Code/*.ocf MultiBUGS-binary/Xhtml/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Dev2/Code/*.ocf MultiBUGS-binary/Dev2/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Gtk2/Code/*.ocf MultiBUGS-binary/Gtk2/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Code/*.ocf MultiBUGS-binary/Code
-      cp -r ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/Cons/Code/*.ocf MultiBUGS-binary/Cons/Code
+      cp -r ${BBINSTALLDIR}/Form/Code/*.ocf MultiBUGS-binary/Form/Code
+      cp -r ${BBINSTALLDIR}/Host/Code/*.ocf MultiBUGS-binary/Host/Code
+      #cp -r ${BBINSTALLDIR}/Lin/Code/*.ocf MultiBUGS-binary/Lin/Code
+      #cp -r ${BBINSTALLDIR}/Ole/Code/*.ocf MultiBUGS-binary/Ole/Code
+      cp -r ${BBINSTALLDIR}/Std/Code/*.ocf MultiBUGS-binary/Std/Code
+      #cp -r ${BBINSTALLDIR}/System/Code/*.ocf MultiBUGS-binary/System/Code
+      cp -r ${BBINSTALLDIR}/Text/Code/*.ocf MultiBUGS-binary/Text/Code
+      #cp -r ${BBINSTALLDIR}/Win/Code/*.ocf MultiBUGS-binary/Win/Code
+      cp -r ${BBINSTALLDIR}/Xhtml/Code/*.ocf MultiBUGS-binary/Xhtml/Code
+      cp -r ${BBINSTALLDIR}/Dev2/Code/*.ocf MultiBUGS-binary/Dev2/Code
+      cp -r ${BBINSTALLDIR}/Gtk2/Code/*.ocf MultiBUGS-binary/Gtk2/Code
+      cp -r ${BBINSTALLDIR}/Code/*.ocf MultiBUGS-binary/Code
+      cp -r ${BBINSTALLDIR}/Cons/Code/*.ocf MultiBUGS-binary/Cons/Code
       cp -r Form/Code/*.ocf MultiBUGS-binary/Form/Code
       cp -r Host/Code/*.ocf MultiBUGS-binary/Host/Code
       #cp -r Lin/Code/*.ocf MultiBUGS-binary/Lin/Code
