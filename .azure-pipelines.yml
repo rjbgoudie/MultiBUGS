@@ -269,28 +269,13 @@ jobs:
       #DISPLAY=:99 mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt &
       #worked
       #./MultiBUGS /PAR script.txt &
-      #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
-      #sleep 100
-      ls
-      #DISPLAY=:99 Rscript -e "1+1"
-      Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")"
-      #sleep 200
+      Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 2, n.chains = 1, report = \"junit\")"
       DISPLAY=:99 import -window root screenshot.png
-      #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
-      which mpiexec
     displayName: Run tests
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName'
       targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/screenshot.png'
-  - task: PublishPipelineArtifact@0
-    inputs:
-      artifactName: 'targz'
-      targetPath: '$(Build.SourcesDirectory)/binary.tar.gz'
-  - task: PublishPipelineArtifact@0
-    inputs:
-      artifactName: 'artifactName2'
-      targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/CODAchain1.txt'
   - task: PublishTestResults@2
     inputs:
       testResultsFiles: 'C:\MultiBUGS\TESTS-*$(WORKERS)workers-$(CHAINS)chains.xml'
