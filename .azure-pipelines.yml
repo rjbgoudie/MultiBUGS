@@ -266,7 +266,7 @@ jobs:
       #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt &
       #worked
       #DISPLAY=:99 mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt &
-      ./MultiBUGS /PAR script.txt
+      ./MultiBUGS /PAR script.txt &
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
       sleep 100
       ls
