@@ -60,10 +60,6 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: |
-      #sudo Xvfb :1 -screen 0 1024x768x24 </dev/null &
-      #export DISPLAY=":1"
-      #xhost local:root
-      #xclock
       # Uninstalling these packages is NOT needed for MultiBUGS, but vastly speeds up apt-get update on Azure
       sudo apt-get -qq remove '^libmono.*' '^mono.*' '^php.*'
     displayName: Uninstall unnecessary packages
@@ -80,11 +76,6 @@ jobs:
       sudo apt-get install g++-multilib
       # By default, R_LIBS_USERS is not set, so need to allow package installation to site-library
       sudo chmod o+w /usr/local/lib/R/site-library
-      #echo $LD_LIBRARY_PATH
-      #ls /usr/lib
-      #ls /usr/lib64
-      #ldconfig -N -v $(sed 's/:/ /g' <<< $LD_LIBRARY_PATH)
-      #echo "int main(){}" | gcc -m32 -x c++ -Wl,--no-as-needed -lmpi - && ldd a.out
     displayName: Install R, 32-bit MPICH, and 32-bit GTK libraries
   - script: |
       git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}/bbcb
@@ -203,7 +194,6 @@ jobs:
       chmod +x MultiBUGS-binary/OpenBUGS
       chmod +x MultiBUGS-binary/MultiBUGS
       chmod +x MultiBUGS-binary/run-MultiBUGS
-      #ldconfig -N -v $(sed 's/:/ /g' <<< $LD_LIBRARY_PATH)
     displayName: Build MultiBUGS
   - script: |
       # needed for devtools
@@ -215,60 +205,10 @@ jobs:
       Rscript -e "install.packages(\"devtools\", repos=\"https://cloud.r-project.org\")" -e "install.packages(\"xml2\", repos=\"https://cloud.r-project.org\")" -e "devtools::install_github(\"MultiBUGS/R2MultiBUGS\")" -e "devtools::install_github(\"MultiBUGS/multibugstests\")"
     displayName: Install R packages
   - script: |
-      #which mpiexec
-      #which mpiexec.mpich
-      #ls -la /usr/bin
-      #file `which mpiexec`
-      #file `which mpiexec.mpich`
-      #file `which mpiexec.hydra`
       Xvfb :99 -screen 0 1024x768x24 </dev/null &
       sleep 5
       export DISPLAY=":99"
       cd ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary
-      #cp /usr/lib/i386-linux-gnu/libmpich.so.12.1.0 libmpich.so
-      #cp /usr/lib/i386-linux-gnu/libmpich.so.12.1.0 ../libmpich.so
-      cat << EOF > script.txt
-      modelDisplay('log')
-      modelCheck("Examples/Seedsmodel.odc")
-      modelData("Examples/Seedsdata.odc")
-      modelCompile(2)
-      modelSetRN(1)
-      modelInits("Examples/Seedsinits.odc", 1)
-      modelInits("Examples/Seedsinits1.odc", 2)
-      modelGenInits()
-      #infoModules()
-      modelDistribute(2)
-      modelUpdate(2000)
-      samplesSet(alpha0)
-      samplesSet(alpha1)
-      samplesSet(alpha2)
-      samplesSet(alpha12)
-      modelUpdate(2000)
-      samplesCoda('*', '/home/vsts/work/1/s/MultiBUGS-binary/')
-      modelQuit('y')
-      EOF
-      cat script.txt
-      #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/run-MultiBUGS &
-      #DISPLAY=:99 ${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/MultiBUGS
-      cd ../
-      #chmod +x testmpiscript
-      #./testmpiscript | ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-dev0
-      #./mpi
-      #mpiexec -n 1 ./mpi
-      #mpiexec -n 2 ./mpi
-      #mpiexec -n 3 ./mpi
-      #ls -la
-      #nm -D --defined-only libmpich.so
-      #
-      #worked
-      #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR MultiBUGS-binary/script.txt
-      tar -czf binary.tar.gz MultiBUGS-binary/
-      cd MultiBUGS-binary
-      #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt &
-      #worked
-      #DISPLAY=:99 mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt &
-      #worked
-      #./MultiBUGS /PAR script.txt &
       Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 2, n.chains = 1, report = \"junit\")"
       DISPLAY=:99 import -window root screenshot.png
     displayName: Run tests
