@@ -267,12 +267,13 @@ jobs:
       #mpiexec.mpich -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox /PAR script.txt &
       #worked
       #DISPLAY=:99 mpiexec.mpich -n 1 ./OpenBUGS /PAR script.txt &
+      #worked
       #./MultiBUGS /PAR script.txt &
       #mpiexec -n 1 ${AGENT_HOMEDIRECTORY}/bbcb/BlackBox/run-BlackBox &
-      sleep 100
+      #sleep 100
       ls
       #DISPLAY=:99 Rscript -e "1+1"
-      Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")"
+      Rscript -e "multibugstests:::bugs_examples_all(dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1, report = \"junit\")" &
       #sleep 200
       DISPLAY=:99 import -window root screenshot.png
       #DISPLAY=:99 Rscript -e "multibugstests:::bugs_example(model = \"Air\", dir = \"${BUILD_SOURCESDIRECTORY}/MultiBUGS-binary/\", n.workers = 1, n.chains = 1)"
