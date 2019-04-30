@@ -265,7 +265,7 @@ jobs:
       targetPath: '$(Build.SourcesDirectory)/MultiBUGS-binary/screenshot.png'
   - task: PublishPipelineArtifact@0
     inputs:
-      artifactName: 'artifactName'
+      artifactName: 'targz'
       targetPath: '$(Build.SourcesDirectory)/binary.tar.gz'
   - task: PublishPipelineArtifact@0
     inputs:
