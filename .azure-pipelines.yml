@@ -84,7 +84,7 @@ jobs:
       #ls /usr/lib
       #ls /usr/lib64
       #ldconfig -N -v $(sed 's/:/ /g' <<< $LD_LIBRARY_PATH)
-      echo "int main(){}" | gcc -m32 -x c++ -Wl,--no-as-needed -lmpi - && ldd a.out
+      #echo "int main(){}" | gcc -m32 -x c++ -Wl,--no-as-needed -lmpi - && ldd a.out
     displayName: Install R, 32-bit MPICH, and 32-bit GTK libraries
   - script: |
       git clone https://github.com/bbcb/bbcp.git ${AGENT_HOMEDIRECTORY}/bbcb
