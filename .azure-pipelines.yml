@@ -209,11 +209,8 @@ jobs:
   - script: |
       # needed for devtools
       sudo apt-get update
-      sudo apt-get install libcurl4-openssl-dev
-      sudo apt-get install libssl-dev
-      sudo apt-get install libgit2-dev
-      sudo apt-get install libssh2-1-dev
-      Rscript -e "install.packages(\"devtools\", repos=\"https://cloud.r-project.org\")" -e "install.packages(\"xml2\", repos=\"https://cloud.r-project.org\")" -e "devtools::install_github(\"MultiBUGS/R2MultiBUGS\")" -e "devtools::install_github(\"MultiBUGS/multibugstests\")"
+      sudo apt-get install libcurl4-openssl-dev libssl-dev libgit2-dev libssh2-1-dev
+      Rscript -e "install.packages(c(\"devtools\", "xml2\"), repos=\"https://cloud.r-project.org\", Ncpus = 2)" -e "devtools::install_github(c(\"MultiBUGS/R2MultiBUGS\", \"MultiBUGS/multibugstests\"), threads = 2)"
     displayName: Install R packages
   - script: |
       Xvfb :99 -screen 0 1024x768x24 </dev/null &
